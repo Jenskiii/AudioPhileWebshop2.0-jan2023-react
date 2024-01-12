@@ -4,7 +4,7 @@ import styles from "./HomeCategoryList.module.css";
 export function HomeCategoryList() {
   return (
     <section className={styles.categoryList}>
-      <CategoryList urlRoute=".." />
+      <CategoryList LinkRoute="../" />
     </section>
   );
 }

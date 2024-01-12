@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { productData } from "../../data/productData";
 import styles from "./CategoryList.module.css";
 
-export function CategoryList({ className, toggleHamburgerMenu, urlRoute = "/" }) {
+export function CategoryList({ className, toggleHamburgerMenu, LinkRoute = "/" }) {
   return (
     <>
       <div className={` ${className}`}>
@@ -11,7 +11,7 @@ export function CategoryList({ className, toggleHamburgerMenu, urlRoute = "/" })
             return (
               <Link
                 className={styles.card}
-                to={`${urlRoute}${item.category}`}
+                to={`${LinkRoute}${item.category}`}
                 key={item.id}
                 onClick={() => toggleHamburgerMenu(false)}
               >
