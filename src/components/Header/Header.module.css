@@ -1,0 +1,52 @@
+.header {
+  position: relative;
+  background-color: hsl(var(--clr-black-grey));
+  z-index: 510;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+}
+
+/* logo */
+.logo {
+  margin-inline: auto;
+  transition: 300ms ease-in-out;
+}
+
+/* nav */
+.nav {
+  display: none;
+}
+
+/* BORDER */
+.border {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 3.1em);
+  height: 1px;
+  background-color: hsl(var(--clr-white) / 0.2);
+}
+
+/* mq's */
+@media (min-width: 47rem) {
+  .logo {
+    margin-inline: 2.62rem auto;
+  }
+}
+
+@media (min-width: 79rem) {
+  .container {
+    justify-content: space-between;
+  }
+  .logo {
+    margin-inline: 0;
+  }
+  .nav {
+    display: flex;
+  }
+}

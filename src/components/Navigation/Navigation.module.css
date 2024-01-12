@@ -1,0 +1,50 @@
+.nav {
+  display: flex;
+  gap: 2.12rem;
+}
+
+.nav a {
+  font-size: var(--fs-100);
+  color: hsl(var(--clr-white));
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  line-height: 1.5625rem;
+  transition: 300ms ease-in-out;
+}
+
+.nav li:is(:hover, :active) a {
+  color: hsl(var(--clr-accent));
+}
+
+/* mobile navigation */
+.mobileNav {
+  position: fixed;
+  width: 100%;
+  background-color: hsl(var(--clr-white));
+  padding-block: 5.25rem 2.19rem;
+  border-radius: 0 0 var(--br-1) var(--br-1);
+  z-index: 50;
+  opacity: 0;
+  left: -75rem;
+  transition: 500ms ease-in-out;
+}
+
+.mobileNav.active{
+  opacity: 1;
+  left: 0;
+}
+
+/* tablet */
+@media (min-width: 47rem) {
+  .mobileNav {
+    padding-block: 6.75rem 4.19rem;
+  }
+}
+
+/* desktop */
+@media (min-width: 79rem) {
+  .mobileNav {
+    display: none;
+  }
+}

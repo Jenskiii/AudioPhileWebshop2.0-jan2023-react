@@ -1,0 +1,16 @@
+/* CATEGORYLIST */
+.categoryList {
+  padding-block: 2.5rem 7.5rem;
+}
+
+@media (min-width: 47em) {
+  .categoryList {
+    padding-block: 6rem;
+  }
+}
+
+@media (min-width: 79em) {
+  .categoryList {
+    padding-block: 7.5rem 10.5rem;
+  }
+}

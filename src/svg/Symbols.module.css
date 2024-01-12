@@ -1,0 +1,9 @@
+.companyLogo,.socials {
+  fill: hsl(var(--clr-white));
+  transition: 300ms ease-in-out;
+}
+
+.socials:is(:hover, :active) {
+  cursor: pointer;
+  fill: hsl(var(--clr-accent));
+}

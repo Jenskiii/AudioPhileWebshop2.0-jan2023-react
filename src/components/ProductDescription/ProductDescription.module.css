@@ -1,0 +1,82 @@
+.container {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  color: inherit;
+  text-align: center;
+  z-index: 2;
+}
+
+.newProduct {
+  color: hsl(var(--clr-accent));
+  font-size: var(--fs-200);
+  font-weight: 400;
+  letter-spacing: 0.625rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.title {
+  font-size: var(--fs-900);
+  letter-spacing: 0.0625rem;
+  max-width: 12ch;
+}
+
+.newProduct,
+.title {
+  text-transform: uppercase;
+}
+
+.information {
+  max-width: 30ch;
+  opacity: 0.5;
+}
+
+/* only for home page */
+.container.home .title {
+  line-height: 2.5rem;
+  letter-spacing: 0.08038rem;
+}
+.container.home .newProduct {
+  color: inherit;
+  margin-bottom: 1rem;
+}
+
+/* tablet */
+@media (min-width: 47em) {
+  .title {
+    line-height: 2.75rem;
+    letter-spacing: 0.08931rem;
+  }
+  .information {
+    max-width: 40ch;
+  }
+  .newProduct {
+    margin-bottom: 1rem;
+  }
+
+  /* home only */
+  .container.home .title {
+    line-height: 3.625rem;
+    letter-spacing: 0.125rem;
+  }
+  .container.home .newProduct {
+    margin-bottom: 1.5rem;
+  }
+  .container.home .information {
+    margin-bottom: 1rem;
+  }
+}
+/* desktop */
+@media (min-width: 79em) {
+  .container {
+    justify-items: start;
+    text-align: left;
+    gap: 2rem;
+  }
+  
+  /* home only */
+  .container.home {
+    gap: 1.5rem;
+  }
+}
