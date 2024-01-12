@@ -1,5 +1,5 @@
-import data from "../../../data/data.json";
-import { ProductDescription } from "../../../components/ProductDescription/ProductDescription";
+import data from "../../../data/data.json"
+import {ProductDescription} from "../../../components/ProductDescription/ProductDescription"
 import styles from "./HomeHero.module.css";
 
 export function HomeHero() {
