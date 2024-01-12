@@ -22,6 +22,7 @@ export function Header() {
           />
 
           <CompanyLogo className={styles.logo} />
+
           <Nav className={styles.nav} />
           <CartButton
             toggleCart={toggleCartMenu}
@@ -39,7 +40,7 @@ export function Header() {
         />
 
         <Cart cartMenu={cartMenu} />
-        
+
         <Modal
           hamburgerMenu={hamburgerMenu}
           toggleHamburgerMenu={toggleHamburgerMenu}

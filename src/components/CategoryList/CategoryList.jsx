@@ -11,7 +11,7 @@ export function CategoryList({ className, toggleHamburgerMenu }) {
             return (
               <Link
                 className={styles.card}
-                to={`../${item.category}`}
+                to={item.category}
                 key={item.id}
                 onClick={() => toggleHamburgerMenu(false)}
               >
