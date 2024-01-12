@@ -45,6 +45,7 @@
       "navigation navigation"
       "text text"
       "copyright socials";
+    grid-template-columns: 1fr;
     justify-content: start;
     align-items: center;
     gap: 2rem;
