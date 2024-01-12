@@ -1,9 +1,11 @@
-.companyLogo,.socials {
+.companyLogo,
+.socials {
+  cursor: pointer;
   fill: hsl(var(--clr-white));
   transition: 300ms ease-in-out;
 }
 
-.socials,.companyLogo:is(:hover, :active) {
-  cursor: pointer;
+.socials:is(:hover, :active),
+.companyLogo:is(:hover, :active) {
   fill: hsl(var(--clr-accent));
 }

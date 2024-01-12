@@ -5,6 +5,8 @@
   --clr-white: 0 0% 100%;
   --clr-black: 0 0% 0%;
   --clr-black-grey: 0 0% 10%;
+  --clr-black-lighter: 0 0% 30%;
+  
   --clr-grey: 0 0% 95%;
   --clr-grey-light: 0 0% 98%;
 
@@ -59,6 +61,7 @@
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 li {

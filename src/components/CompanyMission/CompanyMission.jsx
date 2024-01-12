@@ -1,26 +1,18 @@
+import { PictureTag } from "../PictureTag/PictureTag";
 import styles from "./CompanyMission.module.css";
 export function CompanyMission({ className = "" }) {
   return (
     <>
       <section className={`${className} | company-mission`}>
         <div className={`${styles.evenColumns} | container`}>
-          <div>
-            <picture>
-              <source
-                media="(min-width: 79em)"
-                srcSet="/assets/shared/desktop/image-best-gear.jpg"
-              />
-              <source
-                media="(min-width: 47em)"
-                srcSet="/assets/shared/tablet/image-best-gear.jpg"
-              />
-              <img
-                className={styles.image}
-                src="/assets/shared/mobile/image-best-gear.jpg"
-                alt="man listening to music with a headphone"
-              />
-            </picture>
-          </div>
+          <PictureTag
+            mobile="/assets/shared/mobile/image-best-gear.jpg"
+            tablet="/assets/shared/tablet/image-best-gear.jpg"
+            desktop="/assets/shared/desktop/image-best-gear.jpg"
+            className={styles.image}
+            alt="man listening to music with a headphone"
+          />
+
           <div className={styles.text}>
             <h2>
               Bringing you the <span>best</span> audio gear
