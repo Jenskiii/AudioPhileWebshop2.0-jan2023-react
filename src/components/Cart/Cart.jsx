@@ -39,7 +39,7 @@ export function Cart({ className, cartMenu, toggleCartMenu }) {
                   <div
                     onClick={() => deleteCartItem(item.id)}
                     className={styles.deleteCartItem}
-                  >
+                  >  
                     <img src={item.image} alt={item.name} />
                   </div>
                   {/* name +price */}

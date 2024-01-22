@@ -1,0 +1,19 @@
+.productContainer {
+  display: flex;
+  align-items: center;
+  font-weight: var(--fw-bold);
+  width: 100%;
+}
+.productContainer img{
+  margin-right: 1rem;
+  max-width: 4rem;
+}
+.productContainer.small img {
+    max-width: 3.125rem;
+  }
+.price {
+  font-size: var(--fs-100);
+}
+.amount {
+  margin-left: auto;
+}

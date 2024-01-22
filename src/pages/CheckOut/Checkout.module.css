@@ -8,7 +8,10 @@
 
 /* END MENU */
 /* modal */
-.modal {
+.modal{
+  max-width: 33.75rem;
+}
+.modalContainer {
   display: grid;
   gap: 1.5rem;
 }
@@ -36,22 +39,7 @@
   border-radius: var(--br-1) var(--br-1) 0 0;
   padding: 1.5rem;
 }
-.productContainer {
-  display: flex;
-  align-items: center;
-  font-weight: var(--fw-bold);
-  line-height: 1.5625rem;
-}
-.productContainer img {
-  margin-right: 1rem;
-  max-width: 3.125rem;
-}
-.price {
-  font-size: var(--fs-100);
-}
-.amount {
-  margin-left: auto;
-}
+
 
 /* total items */
 .totalItems {
@@ -99,13 +87,13 @@
   }
 
   /* modal */
-  .modal {
+  .modalContainer {
     margin: 1.5rem;
     gap: 2rem;
   }
   .card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr .9fr;
   }
   .productList {
     border-radius: var(--br-1) 0 0 var(--br-1);

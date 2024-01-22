@@ -5,6 +5,7 @@ import { ModalWithContent } from "../../components/Modal/Modal";
 import styles from "./Checkout.module.css";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { ProductDetails } from "../../components/ProductDetails/ProductDetails";
 
 export function CheckOut() {
   const { cartItems, getCartTotal, getCartTotalItems, clearCart } =
@@ -12,7 +13,7 @@ export function CheckOut() {
 
   // toggle endscreen
   const [toggleEndScreen, setEndScreen] = useState(false);
-
+  // open close accordion end screen
   const [endScreenCartAccordion, setEndScreenCartAccordion] = useState(true);
 
   return (
@@ -24,8 +25,8 @@ export function CheckOut() {
 
         {/* if checked out show endscreen */}
         {toggleEndScreen && (
-          <ModalWithContent>
-            <div className={styles.modal}>
+          <ModalWithContent className={styles.modal}>
+            <div className={styles.modalContainer}>
               <img
                 className={styles.img}
                 src="/assets/checkout/icon-order-confirmation.svg"
@@ -50,29 +51,24 @@ export function CheckOut() {
                     : cartItems.slice(0)
                   ).map((item) => {
                     return (
-                      // product
-                      <div
+                      <ProductDetails
                         key={crypto.randomUUID()}
-                        className={styles.productContainer}
-                      >
-                        <img src={item.image} alt={item.name} />
-                        <div>
-                          <strong>{item.name}</strong>
-                          <p className={styles.price}>{`$ ${item.price}`}</p>
-                        </div>
-                        <p className={styles.amount}>x{item.amount}</p>
-                      </div>
+                        {...item}
+                        small
+                      />
                     );
                   })}
 
-                  <p
-                    className={styles.totalItems}
-                    onClick={() => setEndScreenCartAccordion((prev) => !prev)}
-                  >
-                    {endScreenCartAccordion
-                      ? ` and ${getCartTotalItems()} other item(s)`
-                      : "View less"}
-                  </p>
+                  {cartItems.length > 1 && (
+                    <p
+                      className={styles.totalItems}
+                      onClick={() => setEndScreenCartAccordion((prev) => !prev)}
+                    >
+                      {endScreenCartAccordion
+                        ? ` and ${getCartTotalItems()} other item(s)`
+                        : "View less"}
+                    </p>
+                  )}
                 </div>
                 {/* grand total */}
                 <div className={styles.grandTotal}>

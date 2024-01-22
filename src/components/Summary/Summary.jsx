@@ -2,8 +2,9 @@ import { useContext } from "react";
 import styles from "./Summary.module.css";
 import { CartContext } from "../../context/CartContext";
 import { Button } from "../Button/Button";
+import { ProductDetails } from "../ProductDetails/ProductDetails";
 
-export function Summary({ className}) {
+export function Summary({ className }) {
   const { cartItems, getCartTotal } = useContext(CartContext);
   return (
     <>
@@ -15,14 +16,7 @@ export function Summary({ className}) {
           {cartItems.map((item) => {
             return (
               <li key={crypto.randomUUID()}>
-                {/* image */}
-                <img src={item.image} alt={item.name} />
-                {/* name +price */}
-                <div className={styles.wrapper}>
-                  <p className={styles.name}>{item.name}</p>
-                  <p className={styles.price}>$ {item.price}</p>
-                </div>
-                <p className={styles.amount}>x{item.amount}</p>
+                <ProductDetails {...item} />
               </li>
             );
           })}

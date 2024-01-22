@@ -23,12 +23,10 @@ export function Modal({
   );
 }
 
-export function ModalWithContent({className, children}) {
+export function ModalWithContent({ className, children }) {
   return (
-    <div id="myModal" className={`${styles.modalWithContent} ${className}`}>
-      <div className={styles.content}>
-       {children}
-      </div>
+    <div id="myModal" className={`${styles.modalWithContent}`}>
+      <div className={`${styles.content} ${className}`}>{children}</div>
     </div>
   );
 }
