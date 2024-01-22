@@ -66,20 +66,20 @@ export function Form({ className, setEndScreen }) {
     const cityResults = checkCity(city);
     const countryResults = checkCountry(country);
 
-    // // if all true go to end screen
-    // if (
-    //   nameResults.length === 0 &&
-    //   emailResults.length === 0 &&
-    //   phoneResults.length === 0 &&
-    //   addressResults.length === 0 &&
-    //   zipcodeResults.length === 0 &&
-    //   cityResults.length === 0 &&
-    //   countryResults.length === 0 &&
-    //   paymentValidation
-    // ) {
-    //   setEndScreen(true)
-    //   window.scrollTo(0,0)
-    // }
+    // if all true go to end screen
+    if (
+      nameResults.length === 0 &&
+      emailResults.length === 0 &&
+      phoneResults.length === 0 &&
+      addressResults.length === 0 &&
+      zipcodeResults.length === 0 &&
+      cityResults.length === 0 &&
+      countryResults.length === 0 &&
+      paymentValidation
+    ) {
+      setEndScreen(true)
+      window.scrollTo(0,0)
+    }
   }
   return (
     <form

@@ -3,7 +3,6 @@ import { HamburgerButton } from "../Button/Button";
 import { Cart, CartButton } from "../Cart/Cart";
 import { Nav, MobileNav } from "../Navigation/Navigation";
 import styles from "./Header.module.css";
-import { HeaderContext } from "../../context/HeaderContext";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -23,38 +22,34 @@ export function Header({
   }, [location]);
   return (
     <header className={styles.header}>
-      <HeaderContext.Provider
-        value={{ toggleCartMenu, cartMenu, hamburgerMenu, toggleHamburgerMenu }}
-      >
-        <div className="container">
-          {/* content */}
-          <div className={`${styles.container}`}>
-            <HamburgerButton
-              isActive={hamburgerMenu}
-              toggleActive={toggleHamburgerMenu}
-              closeCart={toggleCartMenu}
-            />
-            <CompanyLogo className={styles.logo} />
-            <Nav className={styles.nav} />
-            <CartButton
-              toggleCart={toggleCartMenu}
-              closeHamburger={toggleHamburgerMenu}
-            />
-            {/* border bottom */}
-            <div
-              className={`${styles.border} ${
-                currentPage !== homePage ? "hide" : ""
-              }`}
-            ></div>
-          </div>
-          <Cart cartMenu={cartMenu} toggleCartMenu={toggleCartMenu} />
+      <div className="container">
+        {/* content */}
+        <div className={`${styles.container}`}>
+          <HamburgerButton
+            isActive={hamburgerMenu}
+            toggleActive={toggleHamburgerMenu}
+            closeCart={toggleCartMenu}
+          />
+          <CompanyLogo className={styles.logo} />
+          <Nav className={styles.nav} />
+          <CartButton
+            toggleCart={toggleCartMenu}
+            closeHamburger={toggleHamburgerMenu}
+          />
+          {/* border bottom */}
+          <div
+            className={`${styles.border} ${
+              currentPage !== homePage ? "hide" : ""
+            }`}
+          ></div>
         </div>
-        {/* cart + mobile nav + modal */}
-        <MobileNav
-          hamburgerMenu={hamburgerMenu}
-          toggleHamburgerMenu={toggleHamburgerMenu}
-        />
-      </HeaderContext.Provider>
+        <Cart cartMenu={cartMenu} toggleCartMenu={toggleCartMenu} />
+      </div>
+      {/* cart + mobile nav + modal */}
+      <MobileNav
+        hamburgerMenu={hamburgerMenu}
+        toggleHamburgerMenu={toggleHamburgerMenu}
+      />
     </header>
   );
 }
