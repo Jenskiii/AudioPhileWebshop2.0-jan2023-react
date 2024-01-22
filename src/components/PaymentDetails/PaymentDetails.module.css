@@ -1,0 +1,53 @@
+/* RADIO BUTTON */
+.radioContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.radioButton {
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+
+.radioButton input[type="radio"] {
+  position: absolute;
+  margin-left: 1rem;
+}
+
+.radioButton input[type="radio"]:not(:disabled) ~ label {
+  cursor: pointer;
+}
+
+.radioButton label {
+  display: grid;
+  align-items: center;
+  border: 1px solid hsl(var(--clr-grey-border));
+  border-radius: 0.5rem;
+  height: 3.5rem;
+  padding-left: 2.75rem;
+}
+
+.radioButton input[type="radio"]:checked + label {
+  border-color: hsl(var(--clr-accent));
+  accent-color: hsl(var(--clr-accent));
+}
+.radioButton input[type="radio"]:checked {
+  accent-color: hsl(var(--clr-accent));
+}
+
+.cashPayment {
+  display: flex;
+  gap: 2rem;
+}
+.cashPayment p {
+  opacity: 0.5;
+  max-width: 60ch;
+}
+
+@media (min-width: 42em) {
+  .group {
+    grid-template-columns: 1fr 1fr;
+  }
+}

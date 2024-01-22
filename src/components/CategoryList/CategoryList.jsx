@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { productData } from "../../data/productData";
 import styles from "./CategoryList.module.css";
+import { ArrowRight } from "../../svg/Symbols";
 
 export function CategoryList({
   className,
@@ -10,7 +11,7 @@ export function CategoryList({
   return (
     <>
       <div className={` ${className}`}>
-        <div className={`${styles.container} container`}>
+        <div className={`${styles.container}`}>
           {productData.map((item) => {
             return (
               <Link
@@ -31,7 +32,7 @@ export function CategoryList({
                 <div className={styles.textWrapper}>
                   <h6 className={styles.title}>{item.category}</h6>
                   <p className={styles.link}>
-                    Shop <span>&#11166;</span>
+                    Shop <span><ArrowRight/></span>
                   </p>
                 </div>
               </Link>

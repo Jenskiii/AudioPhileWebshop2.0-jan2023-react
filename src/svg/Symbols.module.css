@@ -9,3 +9,7 @@
 .companyLogo:is(:hover, :active) {
   fill: hsl(var(--clr-accent));
 }
+
+.arrowRight {
+  stroke: hsl(var(--clr-accent));
+}

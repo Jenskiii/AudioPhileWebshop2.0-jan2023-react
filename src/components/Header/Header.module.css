@@ -2,6 +2,8 @@
   position: relative;
   background-color: hsl(var(--clr-black-grey));
   z-index: 510;
+  margin-bottom: -1px;
+  z-index: 50;
 }
 
 .container {
@@ -37,14 +39,19 @@
   .logo {
     margin-inline: 2.62rem auto;
   }
+
+      /* BORDER */
+.border {
+  width: 100%;
+}
 }
 
-@media (min-width: 79rem) {
+@media (min-width: 60rem) {
   .container {
     justify-content: space-between;
   }
   .logo {
-    margin-inline: 0;
+    margin-inline: 0 -8rem;
   }
   .nav {
     display: flex;

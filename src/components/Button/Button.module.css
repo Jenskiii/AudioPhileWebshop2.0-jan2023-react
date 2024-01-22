@@ -10,7 +10,12 @@
   text-transform: uppercase;
   font-weight: var(--fw-bold);
   letter-spacing: 0.0625rem;
-  transition: 500ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+
+.btn:active {
+  font-size: 1rem;
+  box-shadow: 0 0 0.5rem 0.5rem hsl(var(--clr-accent));
 }
 
 /* HAMBURGER */
@@ -25,7 +30,7 @@
   background-position: center;
   transition: 350ms ease-in-out;
 
-  @media (min-width: 79em) {
+  @media (min-width: 60em) {
     display: none;
   }
 }
@@ -41,7 +46,7 @@
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-accent));
 }
-.accent:is(:hover, :focus) {
+.accent:is(:hover, :active) {
   background-color: hsl(var(--clr-accent-hover));
 }
 
@@ -50,7 +55,7 @@
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-black));
 }
-.dark:is(:hover, :focus) {
+.dark:is(:hover, :active) {
   background-color: hsl(var(--clr-black-lighter));
 }
 
@@ -59,7 +64,59 @@
   background-color: 0;
   border: 1px solid hsl(var(--clr-black));
 }
-.outline:is(:hover, :focus) {
+.outline:is(:hover, :active) {
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-black));
+}
+
+/* disabled */
+.disabled {
+  background-color: hsl(var(--clr-grey));
+}
+
+/* RETURN BUTTON */
+.returnButton {
+  opacity: 0.5;
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  transition: 300ms ease-in-out;
+}
+.returnButton:is(:hover, :active) {
+  color: hsl(var(--clr-accent));
+  opacity: 1;
+}
+
+/* COUNTER */
+.counter {
+  display: flex;
+  align-items: center;
+  background-color: hsl(var(--clr-grey-light));
+  max-width: 10rem;
+  padding-inline: 0.9rem;
+  min-height: 2rem;
+}
+.counter p {
+  margin-inline: auto;
+}
+.counter p,
+.counter button {
+  color: inherit;
+  font-size: var(--fs-100);
+  font-weight: var(--fw-bold);
+}
+.counter button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  opacity: 0.25;
+  width: 1rem;
+  transition: color 300ms ease-in-out opacity 300ms ease-in-out;
+}
+.counter button:is(:hover, :focus) {
+  color: hsl(var(--clr-accent));
+  opacity: 1;
+}
+.counter button:active {
+  font-size: var(--fs-400);
 }

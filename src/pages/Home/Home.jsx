@@ -11,7 +11,7 @@ export function Home() {
       <section className={styles.hero}>
         <div className={`${styles.heroWrapper} | container`}>
           <ProductDescription
-            home
+            isHomePage
             newProduct
             AsComponent="h1"
             title={data.headphones[2].name}
@@ -23,28 +23,38 @@ export function Home() {
         </div>
       </section>
 
-      <section className={styles.categoryList}>
+      <section className={`${styles.categoryList} | container`}>
         <CategoryList LinkRoute="../" />
       </section>
 
       <section className={styles.gallery}>
         {/* grid */}
         <div className={`${styles.galleryGrid} container`}>
-          
           {/* grid one */}
           <div className={styles.gridOne}>
-            <PictureTag
-              mobile="/assets/home/mobile/image-speaker-zx9.png"
-              tablet="/assets/home/tablet/image-speaker-zx9.png"
-              desktop="/assets/home/desktop/image-speaker-zx9.png"
-              className={styles.gridOneImage}
-              alt="man listening to music with a headphone"
-              mqDesktop="65em"
-              mqTablet="42em"
-            />
+            <div className={styles.gridOneImageWrapper}>
+              {/* circle pattern */}
+              <img
+                className={styles.circlePattern}
+                src={"/assets/home/desktop/pattern-circles.svg"}
+                alt="circle pattern"
+              />
+              {/* product */}
+              <PictureTag
+                mobile="/assets/home/mobile/image-speaker-zx9.png"
+                tablet="/assets/home/tablet/image-speaker-zx9.png"
+                desktop="/assets/home/desktop/image-speaker-zx9.png"
+                className={styles.gridOneImage}
+                alt="man listening to music with a headphone"
+                mqDesktop="65em"
+                mqTablet="42em"
+              />
+            </div>
             <div className={styles.gridOneInformation}>
               <h4>
-                Zx9 <br /> Speaker
+                Zx9
+                <br />
+                Speaker
               </h4>
               <p>
                 Upgrade to premium speakers that are phenomenally built to

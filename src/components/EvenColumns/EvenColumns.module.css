@@ -1,0 +1,35 @@
+.evenColumns {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .evenColumns img {
+    border-radius: var(--br-1);
+    
+  }
+  .evenColumns picture {
+   max-width: 28rem;
+   margin-inline: auto;
+  }
+  
+  @media (min-width: 47em) {
+    .evenColumns{
+      gap: 3.25rem;
+    }
+    .evenColumns picture {
+      max-width: 50rem;
+    }
+  }
+  
+  @media (min-width: 79em) {
+    .evenColumns {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      place-items: center;
+    }
+    /* switches the position of img and text of unEven Columns based off index */
+    .switchEvenColumns {
+      order: 1;
+    }
+  }

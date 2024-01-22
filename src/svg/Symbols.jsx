@@ -41,6 +41,23 @@ export function CompanyLogo({ className }) {
   );
 }
 
+export function ArrowRight() {
+  return (
+    <>
+      <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"  className={styles.arrowRight}>
+        <path
+          d="M1.322 1l5 5-5 5"
+          stroke=""
+          strokeWidth="2"
+          fill="none"
+          fillRule="evenodd"
+        />
+      </svg>
+    </>
+  );
+}
+
+// socials
 export function FacebookIcon({ className }) {
   return (
     <>

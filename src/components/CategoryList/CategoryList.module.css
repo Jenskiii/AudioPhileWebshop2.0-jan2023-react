@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     gap: .63rem;
-    margin-top: 3.6rem;
+    padding-top: 3.6rem;
 }
 /* card styles */
 .card{
@@ -76,7 +76,7 @@
 @media(min-width:79em){
     .container{
         gap: 1.87rem;
-        margin-top: 4rem;
+        padding-top: 4rem;
     }
     .card{
         height: 12.75rem;

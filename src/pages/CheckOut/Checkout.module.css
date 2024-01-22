@@ -1,0 +1,135 @@
+.checkout {
+  margin-block: 1rem 6.06rem;
+}
+
+.form {
+  margin-top: 1.5rem;
+}
+
+/* END MENU */
+/* modal */
+.modal {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.modalText h3 {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-bold);
+  line-height: 1.75rem; /* 116.667% */
+  letter-spacing: 0.05356rem;
+}
+.modalText p {
+  margin-top: 1rem;
+  opacity: 0.5;
+}
+
+.card p {
+  opacity: 0.5;
+}
+
+/* product */
+.productList {
+  display: grid;
+  gap: 1rem;
+  background-color: hsl(var(--clr-grey));
+  border-radius: var(--br-1) var(--br-1) 0 0;
+  padding: 1.5rem;
+}
+.productContainer {
+  display: flex;
+  align-items: center;
+  font-weight: var(--fw-bold);
+  line-height: 1.5625rem;
+}
+.productContainer img {
+  margin-right: 1rem;
+  max-width: 3.125rem;
+}
+.price {
+  font-size: var(--fs-100);
+}
+.amount {
+  margin-left: auto;
+}
+
+/* total items */
+.totalItems {
+  cursor: pointer;
+  text-align: center;
+  font-size: var(--fs-50);
+  font-weight: var(--fw-bold);
+  border-top: 1px solid hsl(var(--clr-grey-border) / 0.8);
+  opacity: 0.5;
+  padding-block: 0.75rem 1.5rem;
+  margin-block: 0.75rem -1.5rem;
+  transition: 300ms ease-in-out;
+}
+
+.totalItems:hover{
+  color: hsl(var(--clr-accent));
+  opacity: 1;
+}
+
+/* GRANDTOTAL */
+.grandTotal {
+  display: grid;
+  align-items: end;
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-black));
+  border-radius: 0 0 var(--br-1) var(--br-1);
+  padding: 1.5rem;
+}
+.grandTotal p {
+  font-weight: 400;
+  line-height: 1.5625rem;
+}
+.grandTotal h6 {
+  font-size: var(--fs-500);
+  font-weight: var(--fw-bold);
+}
+
+.button {
+  width: 100%;
+}
+
+@media (min-width: 47em) {
+  .checkout {
+    margin-block: 3rem 7.25rem;
+  }
+
+  /* modal */
+  .modal {
+    margin: 1.5rem;
+    gap: 2rem;
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .productList {
+    border-radius: var(--br-1) 0 0 var(--br-1);
+  }
+  .grandTotal {
+    padding: 2.5rem 2rem;
+    border-radius: 0 var(--br-1) var(--br-1) 0;
+  }
+  .button {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 79em) {
+  .form {
+    margin-top: 2.37rem;
+  }
+
+  .checkout {
+    margin-block: 4.94rem 8.81rem;
+  }
+
+  /* modal */
+  .modalText p {
+    margin-top: 1.5rem;
+  }
+}

@@ -25,7 +25,7 @@ export function Nav({ className = "" }) {
 export function MobileNav({hamburgerMenu,toggleHamburgerMenu}) {
   return (
     <>
-      <div className={`${styles.mobileNav} ${hamburgerMenu ? styles.active : ""}`}>
+      <div className={`${styles.mobileNav} ${hamburgerMenu ? styles.active : ""} | container`}>
         <CategoryList  toggleHamburgerMenu={toggleHamburgerMenu}/>
       </div>
     </>

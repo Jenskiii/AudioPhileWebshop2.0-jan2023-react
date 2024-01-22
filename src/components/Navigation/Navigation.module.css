@@ -1,4 +1,5 @@
 .nav {
+  position: relative;
   display: flex;
   gap: 2.12rem;
 }
@@ -19,10 +20,10 @@
 
 /* mobile navigation */
 .mobileNav {
-  position: fixed;
+  position: absolute;
   width: 100%;
   background-color: hsl(var(--clr-white));
-  padding-block: 5.25rem 2.19rem;
+  padding-block: 2rem 2.19rem;
   border-radius: 0 0 var(--br-1) var(--br-1);
   z-index: 50;
   opacity: 0;
@@ -38,12 +39,12 @@
 /* tablet */
 @media (min-width: 47rem) {
   .mobileNav {
-    padding-block: 6.75rem 4.19rem;
+    padding-block: 3.5rem 4.19rem;
   }
 }
 
 /* desktop */
-@media (min-width: 79rem) {
+@media (min-width: 60rem) {
   .mobileNav {
     display: none;
   }
