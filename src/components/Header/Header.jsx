@@ -3,8 +3,6 @@ import { HamburgerButton } from "../Button/Button";
 import { Cart, CartButton } from "../Cart/Cart";
 import { Nav, MobileNav } from "../Navigation/Navigation";
 import styles from "./Header.module.css";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 export function Header({
   hamburgerMenu,
@@ -12,14 +10,6 @@ export function Header({
   cartMenu,
   toggleCartMenu,
 }) {
-  // used to show/hide component based on page
-  const homePage = "http://localhost:5173/home";
-  const location = useLocation();
-  const [currentPage, setCurrentPage] = useState();
-  // updates page url
-  useEffect(() => {
-    if (currentPage !== location) setCurrentPage(window.location.href);
-  }, [location]);
   return (
     <header className={styles.header}>
       <div className="container">
@@ -37,11 +27,7 @@ export function Header({
             closeHamburger={toggleHamburgerMenu}
           />
           {/* border bottom */}
-          <div
-            className={`${styles.border} ${
-              currentPage !== homePage ? "hide" : ""
-            }`}
-          ></div>
+          <div className={styles.border}></div>
         </div>
         <Cart cartMenu={cartMenu} toggleCartMenu={toggleCartMenu} />
       </div>
