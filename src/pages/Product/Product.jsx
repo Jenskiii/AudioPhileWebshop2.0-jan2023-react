@@ -10,15 +10,15 @@ import {
   CounterButton,
   ReturnButton,
 } from "../../components/Button/Button";
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useState } from "react";
+import { useCart } from "../../hooks/useCart";
 
 export function Product() {
   // get data of clicked product
   const { slug } = useParams();
   const product = data.all.find((type) => type.slug === slug);
   // cart
-  const { addNewCartItem } = useContext(CartContext);
+  const { addNewCartItem } = useCart();
   const [productAmount, setProductAmount] = useState(1);
 
   function addToCart() {

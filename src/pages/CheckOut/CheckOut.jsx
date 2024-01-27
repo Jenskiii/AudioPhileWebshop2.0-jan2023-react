@@ -3,18 +3,21 @@ import { Button, ReturnButton } from "../../components/Button/Button";
 import { Form } from "../../components/Form/Form";
 import { ModalWithContent } from "../../components/Modal/Modal";
 import styles from "./Checkout.module.css";
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useState } from "react";
 import { ProductDetails } from "../../components/ProductDetails/ProductDetails";
+import { useCart } from "../../hooks/useCart";
 
 export function CheckOut() {
-  const { cartItems, getCartTotal, getCartTotalItems, clearCart } =
-    useContext(CartContext);
-
+  const { cartItems, getCartTotalPrice, getCartTotalItems, clearCart } = useCart();
   // toggle endscreen
   const [toggleEndScreen, setEndScreen] = useState(false);
   // open close accordion end screen
   const [endScreenCartAccordion, setEndScreenCartAccordion] = useState(true);
+
+  function handleCheckout(){
+    clearCart()
+    setEndScreen(false)
+  }
 
   return (
     <>
@@ -74,7 +77,7 @@ export function CheckOut() {
                 <div className={styles.grandTotal}>
                   <div>
                     <p>GRAND TOTAL</p>
-                    <h6>$ {getCartTotal()}</h6>
+                    <h6>$ {getCartTotalPrice()}</h6>
                   </div>
                 </div>
               </div>
@@ -82,7 +85,7 @@ export function CheckOut() {
               <Button
                 className={styles.button}
                 // resets cart after end screen
-                onClick={() => clearCart()}
+                onClick={() => handleCheckout()}
                 theme="accent"
                 AsComponent={Link}
                 to="../home"

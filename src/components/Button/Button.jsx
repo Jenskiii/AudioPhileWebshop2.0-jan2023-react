@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Button.module.css";
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 
 export function Button({
   className = "",
@@ -55,7 +54,7 @@ export function CounterButton({
   cartAmount,
   id,
 }) {
-  const { increaseCartAmount, decreaseCartAmount } = useContext(CartContext);
+  const { increaseCartAmount, decreaseCartAmount } = useCart();
   // amount -1 if amount is higher than 1
   function decrease() {
     // amount for product page

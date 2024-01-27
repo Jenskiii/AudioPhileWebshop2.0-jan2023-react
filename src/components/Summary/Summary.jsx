@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import styles from "./Summary.module.css";
-import { CartContext } from "../../context/CartContext";
 import { Button } from "../Button/Button";
 import { ProductDetails } from "../ProductDetails/ProductDetails";
+import { useCart } from "../../hooks/useCart";
 
 export function Summary({ className }) {
-  const { cartItems, getCartTotal } = useContext(CartContext);
+  const { cartItems, getCartTotalPrice } = useCart();
   return (
     <>
       <div className={`${styles.summary} ${className}`}>
@@ -25,7 +24,7 @@ export function Summary({ className }) {
         {/* footer */}
         <div className={styles.row}>
           <p className={styles.text}>Total</p>
-          <h6>$ {getCartTotal()}</h6>
+          <h6>$ {getCartTotalPrice()}</h6>
         </div>
         <div className={styles.row}>
           <p className={styles.text}>Shipping</p>
@@ -33,11 +32,11 @@ export function Summary({ className }) {
         </div>
         <div className={styles.row}>
           <p className={styles.text}>Vat (Included)</p>
-          <h6>$ {Math.round((getCartTotal() / 100) * 20)}</h6>
+          <h6>$ {Math.round((getCartTotalPrice() / 100) * 20)}</h6>
         </div>
         <div className={`${styles.row} ${styles.grandTotal}`}>
           <p className={styles.text}>Grand Total</p>
-          <h6 className={styles.grandTotal}>$ {getCartTotal(50)}</h6>
+          <h6 className={styles.grandTotal}>$ {getCartTotalPrice(50)}</h6>
         </div>
         <Button theme="accent" className={styles.button}>
           CONTINUE & PAY

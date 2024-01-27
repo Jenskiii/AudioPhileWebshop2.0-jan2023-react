@@ -2,15 +2,13 @@ import { Link } from "react-router-dom";
 import { CartIcon } from "../../svg/Symbols";
 import { Button, CounterButton } from "../Button/Button";
 import styles from "./Cart.module.css";
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 
 export function Cart({ className, cartMenu, toggleCartMenu }) {
   const currentPage = window.location.href;
   const checkoutPage = "http://localhost:5173/checkout";
 
-  const { cartItems, clearCart, deleteCartItem, getCartTotal } =
-    useContext(CartContext);
+  const { cartItems, clearCart, deleteCartItem, getCartTotalPrice } = useCart();
 
   return (
     <>
@@ -39,7 +37,7 @@ export function Cart({ className, cartMenu, toggleCartMenu }) {
                   <div
                     onClick={() => deleteCartItem(item.id)}
                     className={styles.deleteCartItem}
-                  >  
+                  >
                     <img src={item.image} alt={item.name} />
                   </div>
                   {/* name +price */}
@@ -62,7 +60,7 @@ export function Cart({ className, cartMenu, toggleCartMenu }) {
         {/* Total */}
         <div className={`${styles.row} ${styles.total}`}>
           <p>Total</p>
-          <h6>$ {getCartTotal()}</h6>
+          <h6>$ {getCartTotalPrice()}</h6>
         </div>
 
         {/* if check out page hide checkout button */}
@@ -84,7 +82,7 @@ export function Cart({ className, cartMenu, toggleCartMenu }) {
 }
 
 export function CartButton({ toggleCart, closeHamburger }) {
-  const { getCartTotalItems } = useContext(CartContext);
+  const { getCartTotalItems } = useCart();
   // toggles cart + closes hamburger menu
   function handleCart() {
     toggleCart((prev) => !prev);

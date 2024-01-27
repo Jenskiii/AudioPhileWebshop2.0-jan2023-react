@@ -55,8 +55,6 @@ export function Form({ className, setEndScreen }) {
   function submit(e) {
     e.preventDefault();
     setIsAfterFirstSubmit(true);
-    setEndScreen(true);
-    window.scrollTo(0, 0);
 
     const nameResults = checkName(name);
     const emailResults = checkEmail(email);
@@ -77,10 +75,13 @@ export function Form({ className, setEndScreen }) {
       countryResults.length === 0 &&
       paymentValidation
     ) {
+      setFormValidation(true)
       setEndScreen(true)
       window.scrollTo(0,0)
     }
   }
+
+  {}
   return (
     <form
       onSubmit={submit}
