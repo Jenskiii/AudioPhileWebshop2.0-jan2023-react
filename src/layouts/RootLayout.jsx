@@ -19,6 +19,15 @@ export function RootLayout() {
   // values toggle cart and modal
   const [hamburgerMenu, toggleHamburgerMenu] = useState(false);
   const [cartMenu, toggleCartMenu] = useState(false);
+
+  // loading spinner
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 150);
+  }, [location]);
   return (
     <>
       <Modal
@@ -38,13 +47,19 @@ export function RootLayout() {
       />
       <ScrollRestoration />
 
+      {/* if loading show spinner else show page */}
       {/* body */}
-      <Outlet />
-
-      {/* hides mission on checkout page */}
-      {currentPage !== checkoutPage && <CompanyMission />}
-      {/* footer */}
-      <Footer />
+      {loading ? (
+        <div className={styles.loadingSpinner} />
+      ) : (
+        <>
+          <Outlet />
+          {/* hides mission on checkout page */}
+          {currentPage !== checkoutPage && <CompanyMission />}
+          {/* footer */}
+          <Footer />
+        </>
+      )}
     </>
   );
 }

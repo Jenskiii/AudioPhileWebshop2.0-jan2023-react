@@ -1,5 +1,5 @@
 import { createContext, useEffect,useReducer } from "react";
-import { cartReducer } from "../reducer/cartReducer";
+import { ACTIONS, cartReducer } from "../reducer/cartReducer";
 // context
 export const CartContext = createContext(null);
 // localstorage key

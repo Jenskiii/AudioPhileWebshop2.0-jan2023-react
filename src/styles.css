@@ -6,7 +6,7 @@
   --clr-black: 0 0% 0%;
   --clr-black-grey: 0 0% 10%;
   --clr-black-lighter: 0 0% 30%;
-  
+
   --clr-grey: 0 0% 95%;
   --clr-grey-light: 0 0% 98%;
   --clr-grey-border: 0 0% 81%;
@@ -20,7 +20,7 @@
 
   /* succes */
   --clr-succes: 130 42% 52%;
-  
+
   /* typography */
   --ff-sans: "Manrope", sans-serif;
   /* font sizes */
@@ -83,10 +83,9 @@ svg {
   display: block;
   max-width: 100%;
 }
-img{
+img {
   border-radius: var(--br-1);
 }
-
 
 /*// GENERAL //*/
 body {
@@ -99,19 +98,19 @@ body {
   overflow-x: hidden;
 }
 
+
 /* UTILITIES */
 .container {
   position: relative;
   padding-inline: 1.5rem;
   margin-inline: auto;
-  max-width: var(--max-width,69.375rem);
+  max-width: var(--max-width, 69.375rem);
 }
 
-.disabled-link{
+.disabled-link {
   pointer-events: none;
 }
 
-.hide{
+.hide {
   display: none;
 }
-

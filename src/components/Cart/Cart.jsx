@@ -96,12 +96,14 @@ export function CartButton({ toggleCart, closeHamburger }) {
       onClick={() => handleCart()}
     >
       <CartIcon />
+      {/* cart total */}
       <p
         className={`${styles.cartIconAmount}  ${
           getCartTotalItems() > 0 ? styles.active : ""
         }`}
       >
-        {getCartTotalItems()}
+        {/* adds 0 if below 10 */}
+        {getCartTotalItems().toString().padStart(2, "0")}
       </p>
     </button>
   );

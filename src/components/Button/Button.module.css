@@ -10,34 +10,12 @@
   text-transform: uppercase;
   font-weight: var(--fw-bold);
   letter-spacing: 0.0625rem;
-  transition: 300ms ease-in-out;
+  transition: 250ms ease-in-out;
 }
 
 .btn:active {
   font-size: 1rem;
   box-shadow: 0 0 0.5rem 0.5rem hsl(var(--clr-accent));
-}
-
-/* HAMBURGER */
-.hamburger {
-  cursor: pointer;
-  color: hsl(var(--clr-white));
-  border: 0;
-  background: 0;
-  width: 1rem;
-  height: 0.9375rem;
-  background-image: url(/assets/shared/tablet/icon-hamburger.svg);
-  background-position: center;
-  transition: 350ms ease-in-out;
-
-  @media (min-width: 60em) {
-    display: none;
-  }
-}
-/* style when clicked */
-.hamburger.active {
-  rotate: 180deg;
-  background-image: url(/assets/shared/tablet/icon-close.svg);
 }
 
 /* STYLES */
@@ -72,6 +50,28 @@
 /* disabled */
 .disabled {
   background-color: hsl(var(--clr-grey));
+}
+
+/* HAMBURGER */
+.hamburger {
+  cursor: pointer;
+  color: hsl(var(--clr-white));
+  border: 0;
+  background: 0;
+  width: 1rem;
+  height: 0.9375rem;
+  background-image: url(/assets/shared/tablet/icon-hamburger.svg);
+  background-position: center;
+  transition: 350ms ease-in-out;
+
+  @media (min-width: 60em) {
+    display: none;
+  }
+}
+/* style when clicked */
+.hamburger.active {
+  rotate: 180deg;
+  background-image: url(/assets/shared/tablet/icon-close.svg);
 }
 
 /* RETURN BUTTON */

@@ -3,10 +3,10 @@ import { Nav } from "../Navigation/Navigation";
 import { Socials } from "../Socials/Socials";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+export function Footer({className}) {
   return (
     <>
-      <footer className={styles.footer}>
+      <footer className={`${styles.footer} ${className}`}>
         <div className={`${styles.container} container`}>
           <div className={styles.border}></div>
           <CompanyLogo className={styles.logo} />

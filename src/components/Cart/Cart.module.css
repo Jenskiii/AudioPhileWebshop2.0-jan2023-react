@@ -129,7 +129,6 @@
   cursor: pointer;
   position: relative;
   display: flex;
-  justify-content: center;
   background: 0;
   border: 0;
   fill: hsl(var(--clr-white));
@@ -142,7 +141,8 @@
 .cartIcon p {
   position: absolute;
   top: -1rem;
-  right: .18rem;
+  left: .2rem;
+  margin-inline: auto;
   color: hsl(var(--clr-accent));
   font-size: var(--fs-100);
   font-weight: var(--fw-bold);
