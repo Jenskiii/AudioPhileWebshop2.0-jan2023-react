@@ -11,58 +11,65 @@ import {
   checkPhone,
   checkZipcode,
 } from "./validators";
+import { useInput } from "../../hooks/useInput";
+import { useFormValidation } from "../../hooks/useFormValidation";
 
 export function Form({ className, setEndScreen }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
+  // input values
+  const nameInput = useInput("", "name", "Alexei Ward");
+  const emailInput = useInput("", "email", "alexeiward@mail.com");
+  const phoneInput = useInput("", "phone", "+1 202-555-0136", "tel");
+  const addressInput = useInput("", "address", "1137 Williams Avenue");
+  const zipcodeInput = useInput("", "zipcode", "10001");
+  const cityInput = useInput("", "city", "New York");
+  const countryInput = useInput("", "country", "United States");
+  // validation for paymet segment
   const [paymentValidation, setPaymentValidation] = useState(false);
+  // checks if form is submitted or not
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(false);
+
 
   // auto updates errors after submit if there is a error
   const nameErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkName(name) : [];
-  }, [isAfterFirstSubmit, name]);
+    return isAfterFirstSubmit ? checkName(nameInput.value) : [];
+  }, [isAfterFirstSubmit, nameInput.value]);
 
   const emailErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkEmail(email) : [];
-  }, [isAfterFirstSubmit, email]);
+    return isAfterFirstSubmit ? checkEmail(emailInput.value) : [];
+  }, [isAfterFirstSubmit, emailInput.value]);
 
   const phoneErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkPhone(phone) : [];
-  }, [isAfterFirstSubmit, phone]);
+    return isAfterFirstSubmit ? checkPhone(phoneInput.value) : [];
+  }, [isAfterFirstSubmit, phoneInput.value]);
 
   const addressErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkAddress(address) : [];
-  }, [isAfterFirstSubmit, address]);
+    return isAfterFirstSubmit ? checkAddress(addressInput.value) : [];
+  }, [isAfterFirstSubmit, addressInput.value]);
 
   const zipcodeErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkZipcode(zipcode) : [];
-  }, [isAfterFirstSubmit, zipcode]);
+    return isAfterFirstSubmit ? checkZipcode(zipcodeInput.value) : [];
+  }, [isAfterFirstSubmit, zipcodeInput.value]);
 
   const cityErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkCity(city) : [];
-  }, [isAfterFirstSubmit, city]);
+    return isAfterFirstSubmit ? checkCity(cityInput.value) : [];
+  }, [isAfterFirstSubmit, cityInput.value]);
 
   const countryErrors = useMemo(() => {
-    return isAfterFirstSubmit ? checkCountry(country) : [];
-  }, [isAfterFirstSubmit, country]);
+    return isAfterFirstSubmit ? checkCountry(countryInput.value) : [];
+  }, [isAfterFirstSubmit, countryInput.value]);
 
+  // checks if all inputs are filled correct then goes to end screen
   function submit(e) {
     e.preventDefault();
     setIsAfterFirstSubmit(true);
 
-    const nameResults = checkName(name);
-    const emailResults = checkEmail(email);
-    const phoneResults = checkPhone(phone);
-    const addressResults = checkAddress(address);
-    const zipcodeResults = checkZipcode(zipcode);
-    const cityResults = checkCity(city);
-    const countryResults = checkCountry(country);
+    const nameResults = checkName(nameInput.value);
+    const emailResults = checkEmail(emailInput.value);
+    const phoneResults = checkPhone(phoneInput.value);
+    const addressResults = checkAddress(addressInput.value);
+    const zipcodeResults = checkZipcode(zipcodeInput.value);
+    const cityResults = checkCity(cityInput.value);
+    const countryResults = checkCountry(countryInput.value);
 
     // if all true go to end screen
     if (
@@ -75,13 +82,11 @@ export function Form({ className, setEndScreen }) {
       countryResults.length === 0 &&
       paymentValidation
     ) {
-      setFormValidation(true)
-      setEndScreen(true)
-      window.scrollTo(0,0)
+      setEndScreen(true);
+      window.scrollTo(0, 0);
     }
   }
 
-  {}
   return (
     <form
       onSubmit={submit}
@@ -96,63 +101,44 @@ export function Form({ className, setEndScreen }) {
           <FormRow>
             {/* name */}
             <FormGroup
-              className={`${nameErrors.length > 0 ? styles.error : ""} ${
-                nameErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                nameErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={nameErrors.join(", ")}
             >
               <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Alexei Ward"
-              />
+              <input {...nameInput} />
             </FormGroup>
             {/* email */}
             <FormGroup
-              className={`${emailErrors.length > 0 ? styles.error : ""} ${
-                emailErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                emailErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={emailErrors.join(", ")}
             >
               <label htmlFor="email">Email Address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="alexeiward@mail.com"
-              />
+              <input {...emailInput} />
             </FormGroup>
           </FormRow>
           <FormRow>
             {/* phone */}
             <FormGroup
-              className={`${phoneErrors.length > 0 ? styles.error : ""} ${
-                phoneErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                phoneErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={phoneErrors.join(", ")}
             >
               <label htmlFor="phone">Phone Number</label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                maxLength={15}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+1 202-555-0136"
-              />
+              <input {...phoneInput} />
             </FormGroup>
           </FormRow>
         </FormSection>
@@ -163,84 +149,59 @@ export function Form({ className, setEndScreen }) {
             {/* address */}
             <FormGroup
               fullLength
-              className={`${addressErrors.length > 0 ? styles.error : ""} ${
-                addressErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                addressErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={addressErrors.join(", ")}
             >
               <label htmlFor="address">Address</label>
-              <input
-                id="address"
-                name="address"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="1137 Williams Avenue"
-              />
+              <input {...addressInput} />
             </FormGroup>
           </FormRow>
           <FormRow>
             {/* zipcode */}
             <FormGroup
-              className={`${zipcodeErrors.length > 0 ? styles.error : ""} ${
-                zipcodeErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                zipcodeErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={zipcodeErrors.join(", ")}
             >
               <label htmlFor="zipcode">Zip Code</label>
-              <input
-                id="zipcode"
-                name="zipcode"
-                type="text"
-                maxLength={20}
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}
-                placeholder="10001"
-              />
+              <input {...zipcodeInput} maxLength={20} />
             </FormGroup>
             {/* city */}
             <FormGroup
-              className={`${cityErrors.length > 0 ? styles.error : ""} ${
-                cityErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                cityErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={cityErrors.join(", ")}
             >
               <label htmlFor="city">City</label>
-              <input
-                id="city"
-                name="city"
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="New York"
-              />
+              <input {...cityInput} />
             </FormGroup>
           </FormRow>
           <FormRow>
             {/* country */}
             <FormGroup
-              className={`${countryErrors.length > 0 ? styles.error : ""} ${
-                countryErrors.length === 0 && isAfterFirstSubmit
-                  ? styles.succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                countryErrors,
+                styles.error,
+                styles.succes
+              )}
               errorMessage={countryErrors.join(", ")}
             >
               <label htmlFor="country">Country</label>
-              <input
-                id="country"
-                name="country"
-                type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="United States"
-              />
+              <input {...countryInput} />
             </FormGroup>
           </FormRow>
         </FormSection>

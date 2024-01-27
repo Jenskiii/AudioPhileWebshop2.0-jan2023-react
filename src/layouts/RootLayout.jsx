@@ -39,9 +39,7 @@ export function RootLayout() {
       <ScrollRestoration />
 
       {/* body */}
-      <div className={styles.layout}>
-        <Outlet />
-      </div>
+      <Outlet />
 
       {/* hides mission on checkout page */}
       {currentPage !== checkoutPage && <CompanyMission />}

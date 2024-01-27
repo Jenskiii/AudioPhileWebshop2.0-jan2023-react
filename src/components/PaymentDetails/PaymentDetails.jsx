@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { FormGroup, FormRow, FormSection } from "../Form/Form";
 import { checkEMoneyPin, checkEMoneyNumber } from "./validators";
 import styles from "./PaymentDetails.module.css";
+import { useFormValidation } from "../../hooks/useFormValidation";
+import { useInput } from "../../hooks/useInput";
 
 export function PaymentDetails({
   isAfterFirstSubmit,
@@ -9,30 +11,31 @@ export function PaymentDetails({
   succes,
   paymentValidation,
 }) {
-  const [value, setValue] = useState("pin");
-  const [eMoneyPin, setEMoneyPin] = useState("");
-  const [eMoneyNumber, setEMoneyNumber] = useState("");
+  const [radioValue, setRadioValue] = useState("pin");
+  const eMoneyNumber = useInput("", "e-money-number", "238521993");
+  const eMoneyPin = useInput("", "e-money-pin", "6891");
 
+  
   const eMoneyNumberErrors = useMemo(() => {
-    return isAfterFirstSubmit && value === "pin"
-      ? checkEMoneyNumber(eMoneyNumber)
+    return isAfterFirstSubmit &&  radioValue === "pin"
+      ? checkEMoneyNumber(eMoneyNumber.value)
       : [];
-  }, [isAfterFirstSubmit, eMoneyNumber]);
+  }, [isAfterFirstSubmit, eMoneyNumber.value]);
 
   const eMoneyPinErrors = useMemo(() => {
-    return isAfterFirstSubmit && value === "pin"
-      ? checkEMoneyPin(eMoneyPin)
+    return isAfterFirstSubmit &&  radioValue === "pin"
+      ? checkEMoneyPin(eMoneyPin.value)
       : [];
-  }, [isAfterFirstSubmit, eMoneyPin]);
+  }, [isAfterFirstSubmit, eMoneyPin.value]);
 
   function validatePin() {
-    const eMoneyPinResults = checkEMoneyPin(eMoneyPin);
-    const eMoneyNumberResults = checkEMoneyNumber(eMoneyNumber);
+    const eMoneyPinResults = checkEMoneyPin(eMoneyPin.value);
+    const eMoneyNumberResults = checkEMoneyNumber(eMoneyNumber.value);
 
     paymentValidation(false);
 
     if (
-      value === "pin" &&
+      radioValue === "pin" &&
       eMoneyPinResults === 0 &&
       eMoneyNumberResults === 0
     ) {
@@ -51,10 +54,10 @@ export function PaymentDetails({
                 type="radio"
                 id="e-money"
                 name="payment"
-                checked={value === "pin"}
+                checked={radioValue === "pin"}
                 value="pin"
                 onClick={() => validatePin}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setRadioValue(e.target.value)}
               />
               <label htmlFor="e-money">e-Money</label>
             </div>
@@ -63,10 +66,10 @@ export function PaymentDetails({
                 type="radio"
                 id="cash-on-delivery"
                 name="payment"
-                checked={value === "cash"}
+                checked={radioValue === "cash"}
                 value="cash"
                 onClick={() => paymentValidation(true)}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setRadioValue(e.target.value)}
               />
               <label htmlFor="cash-on-delivery">Cash on Delivery</label>
             </div>
@@ -74,49 +77,37 @@ export function PaymentDetails({
         </FormGroup>
 
         {/* PAYMENT VALUES  */}
-        {value === "pin" ? (
+        {radioValue === "pin" ? (
           <FormRow>
             <FormGroup
-              className={`${eMoneyNumberErrors.length > 0 ? error : ""} ${
-                eMoneyNumberErrors.length === 0 && isAfterFirstSubmit
-                  ? succes
-                  : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                eMoneyNumberErrors,
+                error,
+                succes
+              )}
               errorMessage={eMoneyNumberErrors.join(", ")}
             >
               <label htmlFor="e-money-number">e-Money Number</label>
-              <input
-                id="e-money-number"
-                name="e-money-number"
-                maxLength={9}
-                type="text"
-                value={eMoneyNumber}
-                onChange={(e) => setEMoneyNumber(e.target.value)}
-                placeholder="238521993"
-              />
+              <input {...eMoneyNumber} maxLength={9} />
             </FormGroup>
             <FormGroup
-              className={`${eMoneyPinErrors.length > 0 ? error : ""} ${
-                eMoneyPinErrors.length === 0 && isAfterFirstSubmit ? succes : ""
-              }`}
+              className={useFormValidation(
+                isAfterFirstSubmit,
+                eMoneyPinErrors,
+                error,
+                succes
+              )}
               errorMessage={eMoneyPinErrors.join(", ")}
             >
               <label htmlFor="e-money-pin">e-Money PIN</label>
-              <input
-                id="e-money-pin"
-                name="e-money-pin"
-                maxLength={4}
-                type="text"
-                value={eMoneyPin}
-                onChange={(e) => setEMoneyPin(e.target.value)}
-                placeholder="6891"
-              />
+              <input {...eMoneyPin} maxLength={4} />
             </FormGroup>
           </FormRow>
         ) : (
           <div
             className={`${styles.cashPayment} ${
-              value === "cash" ? styles.active : ""
+              radioValue === "cash" ? styles.active : ""
             }`}
           >
             <img

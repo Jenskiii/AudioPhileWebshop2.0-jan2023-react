@@ -8,15 +8,16 @@ import { ProductDetails } from "../../components/ProductDetails/ProductDetails";
 import { useCart } from "../../hooks/useCart";
 
 export function CheckOut() {
-  const { cartItems, getCartTotalPrice, getCartTotalItems, clearCart } = useCart();
+  const { cartItems, getCartTotalPrice, getCartTotalItems, clearCart } =
+    useCart();
   // toggle endscreen
   const [toggleEndScreen, setEndScreen] = useState(false);
   // open close accordion end screen
   const [endScreenCartAccordion, setEndScreenCartAccordion] = useState(true);
 
-  function handleCheckout(){
-    clearCart()
-    setEndScreen(false)
+  function handleCheckout() {
+    clearCart();
+    setEndScreen(false);
   }
 
   return (
